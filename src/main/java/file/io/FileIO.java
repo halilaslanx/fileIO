@@ -1,11 +1,22 @@
 package file.io;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class FileIO {
@@ -55,6 +66,18 @@ public class FileIO {
 		sc.close();
 		pw.close();
 		
+		InputStream is = new ByteArrayInputStream(new byte[] {1, 2, 3} );
+		int b = 0;
+		while( (b = is.read() )> -1 )
+			System.out.println(b);
+		
+		PrintStream os = new PrintStream(new FileOutputStream(f));
+		os.println("Hello World");
+		os.close();
+		
+		Files.delete(f.toPath());
+		List<String> ls = Arrays.asList(new String[] {"a", "b", "c"});
+		Files.write(f.toPath(), ls, new OpenOption[] { StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE});
 		
 		
 	}
