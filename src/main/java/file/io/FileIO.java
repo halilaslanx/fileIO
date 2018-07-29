@@ -43,7 +43,6 @@ public class FileIO {
 			try {
 				fw.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -58,8 +57,7 @@ public class FileIO {
 //		while (sc.hasNext())
 //			System.out.println(sc.nextLine());
 //		sc.close();		
-//
-//		sc = new Scanner(f);
+
 		PrintWriter pw = new PrintWriter(new File(d, "test_pw.txt"));
 		while (sc.hasNext())
 			pw.println(sc.nextLine());
@@ -74,11 +72,6 @@ public class FileIO {
 		PrintStream os = new PrintStream(new FileOutputStream(f));
 		os.println("Hello World");
 		os.close();
-		
-		Files.delete(f.toPath());
-		List<String> ls = Arrays.asList(new String[] {"a", "b", "c"});
-		Files.write(f.toPath(), ls, new OpenOption[] { StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE});
-		
 		
 	}
 }
